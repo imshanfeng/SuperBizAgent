@@ -1,0 +1,72 @@
+# 生产环境配置 - 敏感信息通过环境变量注入
+server:
+  port: ${SERVER_PORT:9900}
+
+file:
+  upload:
+    path: ${FILE_UPLOAD_PATH:/data/superbizagent/uploads}
+    allowed-extensions: txt,md
+
+milvus:
+  host: ${MILVUS_HOST:165.232.58.12}
+  port: ${MILVUS_PORT:19530}
+  username: ${MILVUS_USERNAME:}
+  password: ${MILVUS_PASSWORD:}
+  database: ${MILVUS_DATABASE:default}
+  timeout: 10000
+
+spring:
+  ai:
+    dashscope:
+      api-key: ${DASHSCOPE_API_KEY}
+      chat:
+        options:
+          timeout: 180000
+      retry:
+        max-attempts: 3
+        backoff:
+          initial-interval: 2000
+          multiplier: 2
+          max-interval: 10000
+    mcp:
+      client:
+        enabled: ${MCP_CLIENT_ENABLED:false}
+        name: tencent-mcp-server
+        version: 1.0.0
+        request-timeout: 60s
+        type: ASYNC
+        sse:
+          connections:
+            tencent-cls:
+              url: ${MCP_SSE_URL:https://mcp-api.tencent-cloud.com}
+              sse-endpoint: ${MCP_SSE_ENDPOINT:/sse/d60f4b471a93e4bb}
+
+dashscope:
+  api:
+    key: ${DASHSCOPE_API_KEY}
+  embedding:
+    model: text-embedding-v4
+
+document:
+  chunk:
+    max-size: 800
+    overlap: 100
+
+rag:
+  top-k: 3
+  model: "qwen3-max"
+
+prometheus:
+  base-url: ${PROMETHEUS_BASE_URL:http://165.232.58.12:9090}
+  timeout: 10
+  mock-enabled: false
+
+cls:
+  mock-enabled: false
+
+# 日志配置
+logging:
+  file:
+    name: ${LOG_PATH:/data/superbizagent/logs/super-biz-agent.log}
+  level:
+    root: INFO

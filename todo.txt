@@ -1,0 +1,6 @@
+在服务器部署这个项目：
+    1.服务器ip: 165.232.58.12,可以直接ssh,不过得走5566端口，不是22
+    2.项目的jar包之类的放在/usr/local/app中，日志放在/data中
+    3.我打算用上域名： www.shanfeng.me 
+    4.本地代码可能得修改下，加个application-prod.yml，这样方便通过环境变量指定
+    5.再修改下/Volumes/PortableSSD/oncall项目/SuperBizAgent/script，里面的脚本可辅助部署项目
