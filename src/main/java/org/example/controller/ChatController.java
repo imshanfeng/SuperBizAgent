@@ -46,7 +46,7 @@ public class ChatController {
     @Autowired
     private ChatService chatService;
 
-    @Autowired(required = false)
+    @Autowired
     private ToolCallbackProvider tools;
 
     private final ExecutorService executor = Executors.newCachedThreadPool();

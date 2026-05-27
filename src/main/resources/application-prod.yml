@@ -30,16 +30,16 @@ spring:
           max-interval: 10000
     mcp:
       client:
-        enabled: ${MCP_CLIENT_ENABLED:false}
-        name: tencent-mcp-server
+        enabled: true
+        name: tencent-cls-mcp-client
         version: 1.0.0
         request-timeout: 60s
         type: ASYNC
         sse:
           connections:
             tencent-cls:
-              url: ${MCP_SSE_URL:https://mcp-api.tencent-cloud.com}
-              sse-endpoint: ${MCP_SSE_ENDPOINT:/sse/d60f4b471a93e4bb}
+              url: http://127.0.0.1:3000
+              sse-endpoint: /sse
 
 dashscope:
   api:

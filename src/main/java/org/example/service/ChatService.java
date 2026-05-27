@@ -38,10 +38,10 @@ public class ChatService {
     @Autowired
     private QueryMetricsTools queryMetricsTools;
 
-    @Autowired(required = false)  // Mock 模式下才注册，所以设置为 optional,真实环境通过mcp配置注入
+    @Autowired  // Mock 模式下才注册，所以设置为 optional,真实环境通过mcp配置注入
     private QueryLogsTools queryLogsTools;
 
-    @Autowired(required = false)
+    @Autowired
     private ToolCallbackProvider tools;
 
     @Value("${spring.ai.dashscope.api-key}")
